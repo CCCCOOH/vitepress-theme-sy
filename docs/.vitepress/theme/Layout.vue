@@ -1,8 +1,8 @@
 <script setup>
 import { useData } from 'vitepress'
-import Home from './components/HomePage.vue';
+import Home from './views/HomePage.vue';
 import Navbar from './components/navbar.vue';
-import Page from './components/Page.vue';
+import Page from './views/Page.vue';
 // https://vitepress.dev/reference/runtime-api#usedata
 const { site, frontmatter, page } = useData()
 </script>

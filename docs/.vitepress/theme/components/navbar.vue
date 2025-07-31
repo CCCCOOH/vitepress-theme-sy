@@ -1,8 +1,8 @@
 <template>
   <div id="nav-root">
-    <ul class="glass" :class="{down: down, hide: down}">
+    <ul class="glass" :class="{down: down, hide: down,}">
       <li v-for="(item, idx) in site.themeConfig.nav" :key="idx">
-        <a :href="item.url" :class="{flipColor: flipColor}">{{ item.text }}</a>
+        <a :href="item.url" :class="{textFlip: ifTextFlip}">{{ item.text }}</a>
       </li>
     </ul>
   </div>
@@ -14,18 +14,21 @@ import { onMounted, ref } from 'vue';
 
 const { site } = useData()
 const down = ref(false);
-const flipColor = ref(false)
+const ifTextFlip = ref(false)
 
 
 onMounted(() => {
   let preScrollY = window.pageYOffset;
   
   window.addEventListener('scroll', () => {
+    
     let currentScrollY = window.pageYOffset;
-    if (currentScrollY > 703) {
-      flipColor.value = true
+    let maxOffset = 837
+    
+    if (currentScrollY > maxOffset) {
+      ifTextFlip.value = true
     } else {
-      flipColor.value = false
+      ifTextFlip.value = false
     }
     
     if (currentScrollY > preScrollY) {
@@ -62,7 +65,7 @@ ul li {
 
 ul li:hover a {
   cursor: pointer;
-  color: rgb(127, 219, 255);
+  color: rgb(214, 214, 214);
 }
 
 a {
@@ -75,7 +78,8 @@ a {
   top: -50px;
 }
 
-.flipColor {
-  color: var(--main-text-color);
+.textFlip {
+  /* color: var(--main-text-color); */
+  color: navy;
 }
 </style>

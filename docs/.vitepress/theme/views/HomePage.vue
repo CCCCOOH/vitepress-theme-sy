@@ -6,7 +6,7 @@
     </ul>
     <h1 v-else>还没有文章哦！</h1>
     <aside>
-      <button class="bold"> &lt; </button>
+      <button class="bold" @click="changePage(currentPage-1)"> &lt; </button>
       <button @click="changePage(idx)" v-for="(item, idx) in pageList.slice(0, 3)" :key="idx">
         {{ idx+1 }}
       </button>
@@ -19,7 +19,7 @@
       <button v-if="pageList.length == 4" @click="changePage(pageList.length-1)">
           {{ pageList.length }}
       </button>
-      <button class="bold">&gt;</button>
+      <button class="bold" @click="changePage(currentPage+1)">&gt;</button>
     </aside>
   </div>
 </template>
@@ -27,21 +27,17 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { data as posts } from '../posts.data.js'
-import Container from "./Home/Container.vue"
-import Head from './Home/Head.vue';
+import Container from "../components/Home/Container.vue"
+import Head from '../components/Home/Head.vue';
 
 const currentPage = ref(0)
-const effectPosts = computed(() => {
-  return posts.filter(p=>p.frontmatter.index_img)
-})
-
 const pageSize = ref(10)
-const postTotal = ref(effectPosts.value.length)
+const postTotal = ref(posts.length)
 
 // 最终渲染文章列表
 const currentPageList = computed(() => {
   const begin = currentPage.value * pageSize.value;
-  return effectPosts.value.slice(begin, begin+pageSize.value);
+  return posts.slice(begin, begin+pageSize.value);
 })
 
 // 用于生成页面按钮
@@ -51,6 +47,9 @@ const pageList = computed(() => {
 })
 
 function changePage(idx) {
+  if (idx < 0 || idx >= pageList.value.length) {
+    return;
+  }
   currentPage.value = idx;
 }
 

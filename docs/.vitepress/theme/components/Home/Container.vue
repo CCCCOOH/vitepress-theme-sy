@@ -1,7 +1,7 @@
 <template>
   <div id="container-root" >
     <a id="cover" :href="data.url">
-      <img :src="data.frontmatter.index_img" alt="">
+      <img :src="data.frontmatter.index_img ? data.frontmatter.index_img : site.themeConfig.default_img" alt="">
     </a>
     <div id="right">
       <p id="title">
@@ -17,6 +17,10 @@
 </template>
 
 <script setup>
+import { useData } from 'vitepress';
+const { site, page } = useData()
+console.log(page.value);
+
 const props = defineProps(["data"])
 </script>
 

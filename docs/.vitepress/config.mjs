@@ -7,25 +7,15 @@ export default defineConfig({
   description: "Sy made this`",
   markdown: {
     theme: 'github-light',
+    math: true
   },
   themeConfig: {
+    default_img: 'https://ccccooh.oss-cn-hangzhou.aliyuncs.com/img/hollow.jpg',
     nav: [
       {
         text: 'Home',
         url: '/'
       },
-      {
-        text: 'About',
-        url: '/'
-      },
-      {
-        text: 'Archive',
-        url: '/'
-      },
-      {
-        text: 'Tags',
-        url: '/'
-      },
-    ]
+    ],
   },
 })
