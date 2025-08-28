@@ -6,10 +6,9 @@
 </template>
 
 <script setup>
-  import Head from '../components/Home/Head.vue';
+  import Head from '../components/Head.vue';
   import { useData } from 'vitepress';
   const { page } = useData();
-  console.log(page.value);
 </script>
 
 <style lang="scss" scoped>
@@ -22,5 +21,5 @@
     background: white;
     padding: 5rem 2rem;
   }
-  @import url('../styles/markdown.css')
+  @import url('../styles/markdown.css');
 </style>

@@ -2,7 +2,10 @@
   <div id="nav-root">
     <ul class="glass" :class="{down: down, hide: down,}">
       <li v-for="(item, idx) in site.themeConfig.nav" :key="idx">
-        <a :href="item.url" :class="{textFlip: ifTextFlip}">{{ item.text }}</a>
+        <a :href="item.url" :class="{textFlip: ifTextFlip}">
+          <div v-if="item.icon" v-html="item.icon"></div>
+          <span>{{ item.text }}</span>
+        </a>
       </li>
     </ul>
   </div>
@@ -65,7 +68,7 @@ ul li {
 
 ul li:hover a {
   cursor: pointer;
-  color: rgb(214, 214, 214);
+  color: lightskyblue;
 }
 
 a {
@@ -81,5 +84,9 @@ a {
 .textFlip {
   /* color: var(--main-text-color); */
   color: navy;
+}
+
+li>a {
+  display: flex;
 }
 </style>

@@ -11,8 +11,8 @@
   },
   "type": "module",
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^7.0.0",
     "@tailwindcss/vite": "^4.1.11",
-    "sass": "^1.89.2",
-    "tailwindcss": "^4.1.11"
+    "sass": "^1.89.2"
   }
 }
